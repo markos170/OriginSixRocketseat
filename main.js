@@ -16,11 +16,11 @@ for (const link of links) {
        nav.classList.remove('show')
     })
 }
-/*header------ escurecer o header ao rolar a pagina*/ 
-const header = document.querySelector('#header')
-const navHeight = header.offsetHeight
+/*header------ escurecer o header e criar um sombra ao rolar a pagina*/ 
+function darKengHeader(){
+    const header = document.querySelector('#header')
+    const navHeight = header.offsetHeight
 
-window.addEventListener('scroll', function () {
     if (window.scrollY >= navHeight) {
         /* se maior ou igual a altura do header adciona*/
         header.classList.add('scroll') 
@@ -28,9 +28,7 @@ window.addEventListener('scroll', function () {
         /*se menor do que a altura do header remove*/ 
         header.classList.remove('scroll')
     }
-
-})
-
+}
 
 /*---testimonials----*/
 
@@ -52,11 +50,29 @@ const scrollReveal = ScrollReveal({
 })
 
 scrollReveal.reveal(
-   '#home .image, #home .text',
-   '#about .image, #about .text',
-   '#services header, #services .card',
-   '#testimonials header, #testimonials .testimonials',
-   '#contacts .text, #contacts .links'
-   ,{ interval: 100 }
+   `#home .image, #home .text,
+   #about .image, #about .text,
+   #services header, #services .card,
+   #testimonials header, #testimonials .testimonials
+   #contacts .text, #contacts .links,
+   footer .brand, footer .social
+   `,
+   { interval: 100 }
 )
 
+/*----Seta para voltar ao topo----*/
+
+function backToTop(){
+    const backToTopButton = document.querySelector('.back-to-top')    
+     if (window.scrollY >= 2000) {
+        backToTopButton.classList.add('show')
+    } else{
+         backToTopButton.classList.remove('show')
+    }
+}
+
+/*----chamadas da mesma função scroll ---*/
+window.addEventListener('scroll', function() {
+    backToTop()
+    darKengHeader()
+})
