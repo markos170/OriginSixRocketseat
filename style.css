@@ -68,6 +68,8 @@ a{
     color: white;
 }
 
+
+
 nav .menu{
     opacity: 0;
     visibility: hidden;
@@ -115,20 +117,24 @@ nav ul li a::after{
     left: 0;
     bottom: -1.5rem;
     transition: width 0.2s;
+    
    
 }
 
-nav ul li a:hover::after{
+nav ul li a:hover::after,
+nav ul li a.active::after{
     width: 100%;
 }
 
 nav ul li a{
-    transition: 0.3s;
+    transition: color 0.3s;
     position: relative;
 }
 
-nav ul li a:hover{
-    color: var(--base-color) ;
+nav ul li a:hover,
+nav ul li a.active{
+    color: var(--base-color);  
+
 }
 
 ul{
@@ -244,7 +250,7 @@ img{
     width: 100%;
     background: var(--base-color-second);
     position: absolute;
-    left: 16.7%;
+    left: 8%;
     top: -7%;
     z-index: 0;
 }
@@ -325,12 +331,12 @@ img{
 
 #about .image::before{
     content: '';
-    height: 100%;
+    height: 90%;
     width: 100%;
     background: var(--base-color-second);
     position: absolute;
-    left: -33%;
-    top: -8.3%;
+    left: -25%;
+    top: -10%;
     z-index: 0;
 }
 
@@ -338,7 +344,7 @@ img{
     background: white;
 }
 #about .image img{
-
+    
     position: relative;
    
 }
@@ -347,7 +353,7 @@ img{
     position: relative;  
 }  
 
-#habout.image img,                      
+#about.image img,                      
 #about .image::before{
     border-radius: 0.25rem;
 }
@@ -600,14 +606,33 @@ a.back-to-top:hover{
     }
 
     nav .menu ul li a.title{
-        font: 400 1.2rem var(--title-font-type);
+        font: 400 1.2rem var(--body-font-type);
         align-items: center;
+        -webkit-font-smoothing: antialiased;
     }
+    nav .menu ul li a.title.active{
+        font-weight: bold ;
+        color: var(--base-color);
+        -webkit-font-smoothing: auto;
+    }
+    #header.scroll nav .menu ul li a.title.active{
+        color: var(--body-color);
+    }
+
+    #header.scroll nav ul li a::after{
+        background-color: var(--body-color);
+    }
+    #header.scroll nav ul li a:hover{
+        color: var(--body-color);  
+    
+    }
+    
 
     nav .icon-menu{
         display: none;
     }
     
+
     #home .image{
         order: 1;
     }
@@ -632,10 +657,19 @@ a.back-to-top:hover{
     }
 
     #about .container{
-        margin: 0;
+        margin: 0 auto;
         grid-auto-flow: column;
-    }
+        max-height: 766px;
+        max-width: 1366px;
 
+
+    }
+     /*
+    #about .image::before{
+        max-height: 405px;
+        max-width: 581px;
+    }
+    */
     .cards{
         grid-template-columns: 1fr 1fr 1fr;
         padding-left: 3rem;
